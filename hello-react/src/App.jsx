@@ -27,7 +27,7 @@ function App() {
             <p className="bg-gray-400 font-bold">+ New Task</p>
         </div>
         <div className="mr-8 border-2 border-slate-400 rounded-lg px-4 py-4">
-          <h1 className="text-2xl text-center font-bold">Completed</h1>
+          <h1 className="text-2xl text-center font-bold">Done</h1>
           <TaskCard
             title="Design the mockup"
             dueDate="10th April"
