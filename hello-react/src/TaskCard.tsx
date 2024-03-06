@@ -3,10 +3,9 @@ import './TaskCard.css'
 
 interface TaskCardProps {
   title: string,
-  dueDate: string,
-  completedAtDate: string, 
+  dueDate?: string,
+  completedAtDate?: string, 
   assigneeName: string,
-  due: string
 }
 
 const TaskCard: React.FC<TaskCardProps> = (props) => {
@@ -16,7 +15,7 @@ const TaskCard: React.FC<TaskCardProps> = (props) => {
       {/* eslint-disable-next-line react/prop-types */}
       <h2 className="text-xl font-bold text-grey-800">{props.title}</h2>
       {/* eslint-disable-next-line react/prop-types */}
-      <p>{(props.due === 'true') ? `Due on: ${props.dueDate}` : `Completed on: ${props.completedAtDate}`}</p>
+      <p>{(props.dueDate) ? `Due on: ${props.dueDate}` : `Completed on: ${props.completedAtDate}`}</p>
       {/* eslint-disable-next-line react/prop-types */}
       <p>Assignee: {props.assigneeName}</p>
     </div>
