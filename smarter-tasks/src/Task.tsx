@@ -4,6 +4,8 @@ import "./TaskCard.css";
 
 interface TaskProp {
 	title: string,
+	description: string,
+	dueDate: string
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,10 +15,10 @@ class Task extends React.Component<TaskProp> {
 			<div className="TaskItem shadow-md border border-slate-100">
 				<h2 className="text-base font-bold my-1">{this.props.title}</h2>
 				<p className="text-sm text-slate-500">
-					Due Date:
+					Due Date:  {this.props.description}
 				</p>
 				<p className="text-sm text-slate-500">
-					Description:
+					Description: {this.props.dueDate}
 				</p>
 			</div>
 		);
