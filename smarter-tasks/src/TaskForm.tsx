@@ -10,76 +10,76 @@ interface TaskFormState {
   description: string;
   dueDate: string;
 }
-class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
-  constructor(props: TaskFormProps) {
-    super(props);
-    this.state = {
-      title: "",
-      description: "",
-      dueDate: "",
-    };
-  }
-  // inputRef = React.createRef<HTMLInputElement>();
 
-  titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ title: event.target.value });
+const TaskForm = (props: TaskFormProps) => {
+  const [formState, setFormState] = React.useState<TaskFormState>({
+    title: "",
+    description: "",
+    dueDate: "",
+  });
+
+  const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setFormState({ ...formState, title: event.target.value });
   };
 
-  descChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ description: event.target.value });
+  const descChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setFormState({ ...formState, description: event.target.value });
   };
 
-  dueChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ dueDate: event.target.value });
+  const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    setFormState({ ...formState, dueDate: event.target.value });
   };
 
-  addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    const newTask = {
-      title: this.state.title,
-      description: this.state.description,
-      dueDate: this.state.dueDate,
-    };
-    this.props.addTask(newTask);
-    this.setState({ title: "", description: "", dueDate: "" });
+    if (formState.title.length === 0 || formState.dueDate.length === 0) {
+      return;
+    }
+    props.addTask(formState);
+    setFormState({ title: "", description: "", dueDate: "" });
   };
-  render() {
-    return (
-      <form onSubmit={this.addTask} className="flex flex-col">
+
+  return (
+    <>
+      <form onSubmit={addTask} className="flex flex-col w-full">
         <input
           required
           placeholder="Task Name"
           id="todoTitle"
           className="border-2 m-2"
           type="text"
-          value={this.state.title}
-          onChange={this.titleChanged}
+          value={formState.title}
+          onChange={titleChanged}
         />
         <input
           type="text"
           placeholder="Todo Description"
           id="todoDescription"
           className="border-2 m-2"
-          value={this.state.description}
-          onChange={this.descChanged}
+          value={formState.description}
+          onChange={descChanged}
         />
         <input
-          type="text"
+          type="date"
           required
           placeholder="Due Date"
           id="todoDueDate"
           className="border-2 m-2"
-          value={this.state.dueDate}
-          onChange={this.dueChanged}
+          value={formState.dueDate}
+          onChange={dueDateChanged}
         />
-        <button className="bg-green-400 p-2 rounded-md" type="submit" id="addTaskButton">
+        <button
+          className="bg-green-400 p-2 rounded-md"
+          type="submit"
+          id="addTaskButton"
+        >
           Add item
         </button>
       </form>
-    );
-  }
-}
+    </>
+  );
+};
+
 export default TaskForm;
