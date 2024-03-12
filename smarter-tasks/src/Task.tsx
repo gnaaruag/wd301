@@ -1,19 +1,20 @@
 import "./TaskCard.css";
 import { TaskItem } from "./types";
 
-// interface TaskProp {
-//   title: string;
-//   description: string;
-//   dueDate: string;
-// }
+interface TaskProp extends TaskItem {
+  deleteTask: (taskid: string) => void;
+}
 
-const Task = (props: TaskItem) => {
+const Task = (props: TaskProp) => {
+
+  
   return (
     <li className="TaskItem shadow-md border border-slate-100 list-none">
       <h2 className="text-base font-bold my-1">{props.title}</h2>
       <p className="text-sm text-slate-500">Due On: {props.dueDate}</p>
       <p className="text-sm text-slate-500">Description: {props.description}</p>
-      <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600">
+      <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600" 
+      onClick={() => props.deleteTask(props.taskId)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

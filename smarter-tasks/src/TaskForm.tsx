@@ -6,13 +6,32 @@ interface TaskFormProps {
 }
 
 interface TaskFormState {
+  taskId: string,
   title: string;
   description: string;
   dueDate: string;
 }
 
+function generateUniqueId() {
+  // Define a hashing function
+  function hashCode(s : string) {
+      return s.split('').reduce(function(a, b) {
+          a = ((a << 5) - a) + b.charCodeAt(0);
+          return a & a;
+      }, 0);
+  }
+
+  const randomString = Math.random().toString(36).substring(2);
+
+  const uniqueId = hashCode(randomString).toString();
+
+  return uniqueId;
+}
+
+
 const TaskForm = (props: TaskFormProps) => {
   const [formState, setFormState] = React.useState<TaskFormState>({
+    taskId: "",
     title: "",
     description: "",
     dueDate: "",
@@ -37,8 +56,16 @@ const TaskForm = (props: TaskFormProps) => {
     if (formState.title.length === 0 || formState.dueDate.length === 0) {
       return;
     }
-    props.addTask(formState);
-    setFormState({ title: "", description: "", dueDate: "" });
+
+    const taskInstance : TaskItem = {
+      taskId: generateUniqueId(),
+      title: formState.title,
+      dueDate: formState.dueDate,
+      description: formState.description
+    } 
+
+    props.addTask(taskInstance);
+    setFormState({ taskId: "", title: "", description: "", dueDate: "" });
   };
 
   return (

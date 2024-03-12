@@ -27,9 +27,13 @@ const TaskApp = () => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
   };
 
-  // const deleteTask = (task: TaskItem) => {
+  const deleteTask = (taskId: string) => {
+    const newTasks = taskAppState.tasks.filter(checkTask => checkTask.taskId !== taskId)
+    setTaskAppState({tasks: newTasks})
+  }
+  
 
-  // }
+
   return (
     <div className="container py-10 max-w-4xl mx-auto">
       <h1 className="text-3xl mb-2 font-bold text-slate-700">Smarter Tasks</h1>
@@ -43,7 +47,7 @@ const TaskApp = () => {
             Pending
           </h1>
           <TaskForm addTask={addTask} />
-          <TaskList tasks={taskAppState.tasks} />
+          <TaskList deleteTask={deleteTask} tasks={taskAppState.tasks} />
         </div>
       </div>
     </div>
