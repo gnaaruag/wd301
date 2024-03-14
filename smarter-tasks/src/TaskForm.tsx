@@ -6,7 +6,7 @@ interface TaskFormProps {
 }
 
 interface TaskFormState {
-  taskId: string,
+  id: string,
   title: string;
   description: string;
   dueDate: string;
@@ -31,7 +31,7 @@ function generateUniqueId() {
 
 const TaskForm = (props: TaskFormProps) => {
   const [formState, setFormState] = React.useState<TaskFormState>({
-    taskId: "",
+    id: "",
     title: "",
     description: "",
     dueDate: "",
@@ -58,14 +58,14 @@ const TaskForm = (props: TaskFormProps) => {
     }
 
     const taskInstance : TaskItem = {
-      taskId: generateUniqueId(),
+      id: generateUniqueId(),
       title: formState.title,
       dueDate: formState.dueDate,
       description: formState.description
     } 
 
     props.addTask(taskInstance);
-    setFormState({ taskId: "", title: "", description: "", dueDate: "" });
+    setFormState({ id: "", title: "", description: "", dueDate: "" });
   };
 
   return (
