@@ -9,7 +9,7 @@ const Task = (props: TaskProps) => {
   // const { props, removeTask } = props;
   console.log(props);
   return (
-    <div className="Taskprops shadow-md border border-slate-100 mt-2 rounded-md">
+    <div className="TaskItem shadow-md border border-slate-100 mt-2 rounded-md">
       <div className=" TaskCard sm:ml-4 sm:flex sm:w-full sm:justify-between">
         <div>
           <a href={`/tasks/${props.id || ""}`}>
