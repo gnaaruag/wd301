@@ -7,7 +7,13 @@ const NotFound: React.FC = () => {
       <p className="text-lg text-gray-600">
         The URL you are looking for does not exist
       </p>
-      <a href="/">Go back Home</a>
+
+	<button className="bg-green-400 m-2 p-2 rounded-md text-white font-bold" id="backToHomeButton">
+
+      <a href="/home">Go back Home</a>
+
+	</button>
+
     </div>
   );
 };
