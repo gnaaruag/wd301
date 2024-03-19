@@ -1,9 +1,6 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Notfound from "./pages/Notfound";
-import Signup from './pages/signup/index';
+import Signup from "./pages/signup/index";
 import Signin from "./pages/signin/index";
 import Dashboard from "./pages/dashboard";
 import ProtectedRoute from "./ProtectedRoute";
@@ -34,19 +31,13 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/logout",
-    element: <Signin />,
-  },
-  {
     path: "*",
     element: <Notfound />,
-  }
+  },
 ]);
 
 const App = () => {
-  return (
-    <RouterProvider router={router} />
-  );
-}
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;

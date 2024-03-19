@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
       </h1>
       <p>Welcome, {userData.name}!</p>
       <p>Email: {userData.email}</p>
-      <a href="/logout" id="logout-link">Logout</a>
+      <a href="/signin" id="logout-link">Logout</a>
     </div>
   );
 };
