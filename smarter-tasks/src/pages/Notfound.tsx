@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotFound: React.FC = () => {
+const Notfound: React.FC = () => {
 
     return (
         <div className="flex flex-col justify-center items-center h-screen bordered border-purple-500 border-2 w-full">
@@ -12,4 +12,4 @@ const NotFound: React.FC = () => {
     );
 };
 
-export default NotFound;
+export default Notfound;
