@@ -9,6 +9,8 @@ import { useProjectsState } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
 import { useMembersState } from "../../context/members/context";
 import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import CommentList from "../comments/CommentList";
+import NewComment from "../comments/NewComment";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
@@ -58,7 +60,7 @@ const TaskDetails = () => {
       dueDate: formatDateForPicker(selectedTask.dueDate),
     },
   });
-
+  console.log(errors);
   if (!selectedProject) {
     return <>No such Project!</>;
   }
@@ -218,6 +220,8 @@ const TaskDetails = () => {
                       Cancel
                     </button>
                   </form>
+                  <CommentList />
+                  <NewComment />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
