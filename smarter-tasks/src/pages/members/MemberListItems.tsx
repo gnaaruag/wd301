@@ -20,7 +20,7 @@ const MemberListItems: React.FC = () => {
         // Call the deleteMembers action
         await deleteMembers(dispatchMembers, memberId);
         // Set refresh to true to trigger data reload
-        window.location.reload();
+        // window.location.reload();
     };
 
     return (
@@ -32,10 +32,10 @@ const MemberListItems: React.FC = () => {
                 }
 
                 return (
-                    <div key={member.id} className="bg-white rounded-lg shadow-md p-4 mb-4 member">
+                    <div key={member.id} className="bg-white text-black rounded-lg shadow-md p-4 mb-4 member">
                         <div>
-                            <h5 className="text-lg font-semibold dark:text-white">{member.name}</h5>
-                            <h6 className="text-gray-600 dark:text-white">{member.email}</h6>
+                            <h5 className="text-lg font-semibold dark:text-black">{member.name}</h5>
+                            <h6 className="text-gray-600 dark:text-black">{member.email}</h6>
                         </div>
                         <div className="mt-2">
                             <button

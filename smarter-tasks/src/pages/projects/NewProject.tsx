@@ -37,11 +37,13 @@ const NewProject = () => {
     // Then depending on response, I'll either close the modal...
     if (response.ok) {
       setIsOpen(false)
+      // window.location.reload()
     } else {
 
       // Or I'll set the error.
       setError(response.error as React.SetStateAction<null>)
     }
+    
   };
   return (
     <>
