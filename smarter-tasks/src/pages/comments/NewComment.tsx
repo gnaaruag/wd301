@@ -17,7 +17,7 @@ const NewComment = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<CommentsPayload>({});
-  console.log(errors)
+  console.log(errors);
   useEffect(() => {
     if (taskID && projectID) fetchComments(commentDispatch, projectID, taskID);
   }, [commentDispatch, projectID, taskID]);
@@ -36,7 +36,7 @@ const NewComment = () => {
       const currentUser = JSON.parse(currentMemberString);
       console.log(formData.comment);
       if (currentUser.name) {
-		console.log('ueee')
+        console.log("ueee");
         const comment = {
           description: formData.comment,
           name: currentUser.name.toString(),
@@ -60,6 +60,7 @@ const NewComment = () => {
           {...register("comment")}
           placeholder="Add a comment..."
           className="w-full border rounded-md py-2 px-3 my-2 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          name="commentBox"
         />
         <button
           type="submit"

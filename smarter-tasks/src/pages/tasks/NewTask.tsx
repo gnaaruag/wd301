@@ -20,7 +20,7 @@ const NewTask = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors },
   } = useForm<TaskDetailsPayload>();
-  console.log(errors)
+  console.log(errors);
   const projectState = useProjectsState();
   const taskDispatch = useTasksDispatch();
 
@@ -89,26 +89,29 @@ const NewTask = () => {
                         {...register("title", { required: true })}
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
+
                       <input
                         type="text"
                         required
                         placeholder="Enter description"
                         autoFocus
                         id="description"
-                        // register the description field
+                        // Register the description field
                         {...register("description", { required: true })}
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
+
                       <input
                         type="date"
                         required
                         placeholder="Enter due date"
                         autoFocus
                         id="dueDate"
-                        // register due date field
+                        // Register due date field
                         {...register("dueDate", { required: true })}
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
+
                       <button
                         type="submit"
                         // Set an id for the submit button
