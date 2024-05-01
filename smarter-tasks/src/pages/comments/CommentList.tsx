@@ -4,6 +4,7 @@ const CommentList = () => {
   const commentState = useCommentsState();
 
   const { comments, isLoading, isError, errorMessage } = commentState;
+  console.log(comments)
 
   if (isError) {
     return <div>Error: {errorMessage}</div>;

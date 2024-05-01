@@ -1,3 +1,5 @@
+/* eslint-disable no-empty-pattern */
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CommentsPayload } from "../../context/comment/types";
 //import { addTask } from "../../context/task/actions";
@@ -7,17 +9,17 @@ import { addComment, fetchComments } from "../../context/comment/actions";
 import { useCommentsDispatch } from "../../context/comment/context";
 
 const NewComment = () => {
-  const [open, setIsOpen] = useState(true);
-  console.log(open);
+  const [, setIsOpen] = useState(true);
+
   const { projectID, taskID } = useParams();
   const navigate = useNavigate();
   const commentDispatch = useCommentsDispatch();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {},
   } = useForm<CommentsPayload>({});
-  console.log(errors);
+
   useEffect(() => {
     if (taskID && projectID) fetchComments(commentDispatch, projectID, taskID);
   }, [commentDispatch, projectID, taskID]);
@@ -33,13 +35,12 @@ const NewComment = () => {
         console.error("User data not found in local storage.");
         return;
       }
-      const currentUser = JSON.parse(currentMemberString);
-      console.log(formData.comment);
-      if (currentUser.name) {
-        console.log("ueee");
+      const currentMember = JSON.parse(currentMemberString);
+      console.log('fd',formData);
+      if (currentMember.name) {
         const comment = {
           description: formData.comment,
-          name: currentUser.name.toString(),
+          name: currentMember.name.toString(),
           timestamp: new Date().toISOString(),
         };
         console.log(comment);
@@ -60,18 +61,17 @@ const NewComment = () => {
           {...register("comment")}
           placeholder="Add a comment..."
           className="w-full border rounded-md py-2 px-3 my-2 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
-          name="commentBox"
         />
         <button
           type="submit"
           id="addCommentBtn"
-          className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none f"
+          className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >
           Add Comment
         </button>
         <button
           onClick={closeModal}
-          className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 mx-3 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none f"
+          className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 mx-3 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >
           Cancel
         </button>
