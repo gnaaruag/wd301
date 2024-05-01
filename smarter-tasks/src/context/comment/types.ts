@@ -5,7 +5,7 @@ export interface Comment {
     User: any;
     // User: any;
     createdAt: ReactNode;
-    description: ReactNode;
+    description: string;
     id: number;
     comment: string;
     name: string;

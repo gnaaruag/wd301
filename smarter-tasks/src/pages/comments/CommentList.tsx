@@ -27,6 +27,7 @@ const CommentList = () => {
             <div key={comment.id} className="comment">
               <div className="mr-3">{comment.description}</div>
               <div className="mr-3">{comment.createdAt}</div>
+              <div className="mr-3">{comment.comment}</div>
               <div className="mr-3">
                 {comment.User ? comment.User.name : User}
               </div>
