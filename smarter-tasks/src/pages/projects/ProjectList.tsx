@@ -16,7 +16,7 @@ const ProjectList: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mt-4">
       <ProjectListItems />
     </div>
   )
