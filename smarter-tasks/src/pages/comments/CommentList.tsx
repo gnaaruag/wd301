@@ -4,7 +4,7 @@ const CommentList = () => {
   const commentState = useCommentsState();
 
   const { comments, isLoading, isError, errorMessage } = commentState;
-  console.log(comments)
+  console.log(comments);
 
   if (isError) {
     return <div>Error: {errorMessage}</div>;
@@ -27,10 +27,12 @@ const CommentList = () => {
           comments.map((comment) => (
             <div key={comment.id} className="comment">
               <div className="mr-3">{comment.description}</div>
-              <div className="mr-3">{comment.createdAt}</div>
-              <div className="mr-3">{comment.comment}</div>
-              <div className="mr-3">
-                {comment.User ? comment.User.name : User}
+              <div className="flex">
+                <div className="mr-3">{comment.createdAt}</div>
+                <div className="mr-3">{comment.comment}</div>
+                <div className="mr-3">
+                  {comment.User ? comment.User.name : User}
+                </div>
               </div>
             </div>
           ))
